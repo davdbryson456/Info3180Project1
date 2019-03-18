@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/new_profile.css') }}" type="text/css" />
+{% endblock %}
+
+{% block main %}
+{% include "flash_messages.html" %}
+<div class="form-container border-style">
+    <h1 id="page-title">Add Profile</h1> 
+    <form method = "POST" action="{{ url_for('profile') }}" enctype="multipart/form-data">
+        
+        {{Profile.csrf_token}}
+        
+        <div class="containers">
+             {{Profile.firstname.label(class="block")}}
+             {{Profile.firstname(class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            {{Profile.lastname.label(class="block")}}
+            {{Profile.lastname(class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            {{Profile.gender.label(class="block")}}
+            {{Profile.gender(class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            {{Profile.email.label(class="block")}}
+            {{Profile.email(placeholder = "eg. example@example.com", class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            {{Profile.location.label(class="block")}}
+            {{Profile.location(placeholder="eg. Kingston, Jamaica", class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            {{Profile.biography.label(class="block")}}
+            {{Profile.biography(class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            {{Profile.profilepic.label(class="block")}}
+            {{Profile.profilepic(class="field col-md-8")}}
+        </div>
+        
+        <div class="containers">
+            <input type="submit" value="Add Profile" class="btn btn-success"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
